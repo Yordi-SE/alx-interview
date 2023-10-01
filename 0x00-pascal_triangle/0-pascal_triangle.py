@@ -6,7 +6,7 @@ def pascal_triangle(n):
     """This the body of
     the function
     """
-    if n <= 0:
+    if type(n) is not int or n <= 0:
         return []
     main_list = [[1], [1, 1]]
     sub_list = []
