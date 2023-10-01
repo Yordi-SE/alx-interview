@@ -3,6 +3,8 @@
 
 
 def pascal_triangle(n):
+    if n <= 0:
+        return []
     main_list = [[1], [1, 1]]
     sub_list = []
     for j in range(n - 2):
