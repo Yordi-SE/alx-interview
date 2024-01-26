@@ -1,20 +1,28 @@
-#!/usr/bin/python3
-"""pascal triangle function"""
+#!/usr/bin/env python3
+from typing import List
 
 
-def pascal_triangle(n):
-    """This the body of
-    the function
-    """
-    if type(n) is not int or n <= 0:
+def pascal_triangle(n: int) -> List[list]:
+    '''
+    Pascal triangle
+    '''
+    if n <= 0:
         return []
-    main_list = [[1], [1, 1]]
-    sub_list = []
-    for j in range(n - 2):
-        for i in range(len(main_list[-1]) - 1):
-            sub_list.append(main_list[-1][i] + main_list[-1][i + 1])
-        sub_list.append(1)
-        sub_list.insert(0, 1)
-        main_list.append(sub_list)
-        sub_list = []
-    return main_list
+
+    if n == 1:
+        return [[1]]
+
+    if n == 2:
+        return [[1], [1, 1]]
+
+    triangle = [[1], [1, 1]]
+
+    for i in range(2, n):
+        temp = [1, 1]
+        for j in range(0, len(triangle[-1])-1):
+            a = triangle[-1][j]
+            b = triangle[-1][j+1]
+            temp.insert(-1, a + b)
+        triangle.append(temp)
+
+    return triangle
